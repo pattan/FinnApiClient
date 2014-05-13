@@ -1,0 +1,19 @@
+{
+    "name": "reeltime/finnapiclient",
+    "description": "A simple PHP rest-client made spesifically for use with FINN.no API for properties",
+    "authors": [
+        {
+            "name": "Glenn Wedin",
+            "email": "glenn@reeltime.no"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+		"php": ">=5.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Finn\\": "src/"
+        }
+    }
+}
