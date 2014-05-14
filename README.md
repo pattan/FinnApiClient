@@ -5,7 +5,7 @@ If you are using composer in your project, follow the first step. If not, carry 
 ### With composer:
 
 Add this to your projects composer.json file
-```
+```javascript
 "repositories": [
 	{
 		"type": "vcs",
@@ -23,7 +23,7 @@ Then run:
 ### Whithout composer
 
 Download the zip-file and this in your php:
-```
+```php
 require('FinnApiClient-master/vendor/autoload.php');
 use Finn\RestClient\CurlClient;
 use Finn\FinnClient\FinnClient;
