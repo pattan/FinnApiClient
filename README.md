@@ -3,7 +3,8 @@
 ### With composer:
 
 Add this to your projects composer.json file
-`"repositories": [
+```
+"repositories": [
 		{
 			"type": "vcs",
 			"url": "https://github.com/luhmor/FinnApiClient"
@@ -12,6 +13,6 @@ Add this to your projects composer.json file
     "require": {
 		"reeltime/finnapiclient":"*"
     }
-`
+```
 
 ### Whithout composer
