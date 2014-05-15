@@ -102,11 +102,13 @@ class CurlClient implements ClientInterface
 		
 		$rawData = curl_exec($this->ch);
 		
-		if (curl_error($this->ch)) {
-			print_r(curl_error($this->ch));
-			die("Fetch problem");
-		}		
-		return $rawData;
+		$httpcode = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);	
+		if($httpcode == 200) 
+		{		
+			return $rawData;
+		} else {
+			return null;
+		}
 	}
 	
 }

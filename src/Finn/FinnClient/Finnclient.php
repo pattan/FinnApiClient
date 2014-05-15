@@ -42,14 +42,15 @@ class FinnClient
 	{
 		$url = $this->apiUrl.'ad/'.$type.'/'.$finncode;
 		$rawData = $this->restClient->send($url);
-
-		//parse dataene til array med objekter
 		
-		$entry = new \SimpleXMLElement($rawData);
-		$ns = $entry->getNamespaces(true);
-
-		$resultSet = $this->parseEntry($entry, $ns);
-		return $resultSet;
+		//parse dataene til array med objekter
+		if(isset($rawData)){
+			$entry = new \SimpleXMLElement($rawData);
+			$ns = $entry->getNamespaces(true);
+	
+			$resultSet = $this->parseEntry($entry, $ns);
+			return $resultSet;
+		}
 	}
 	
 	/*
