@@ -151,6 +151,8 @@ class FinnClient
 			$ownershipType = "";
 			$usableSize = "";
 			$primarySize = "";
+			$facilities = array();
+			$generalText = array();
 			foreach ($adata->children($ns['finn'])->field as $field) {
 				if ($field->attributes()->name == 'no_of_bedrooms') {
 					$numberOfBedrooms = $field->attributes()->value;
@@ -173,8 +175,23 @@ class FinnClient
 						$livingSizeTo = $sizeField->attributes()->to;
 					}
 				}
+				
+				if($field->attributes()->name == 'facilities') {
+					foreach($field->children($ns['finn'])->field as $facility) {
+						$facilities[] = (string)$facility;
+					}
+				}
+				
+				/*if($field->attributes()->name == 'general_text') {
+					foreach($field->children($ns['finn'])->field as $text) {
+						$generalText[] = (string)$text;
+					}
+				}
+				*/
 			}
 			
+			$property->facilities = $facilities;
+			//$property->generalText = $generalText;
 			$property->livingSizeFrom = (string)$livingSizeFrom;
 			$property->livingSizeTo = (string)$livingSizeTo;
 			$property->propertyType = (string)$propertyType;
@@ -182,6 +199,10 @@ class FinnClient
 			$property->ownershipType = (string)$ownershipType;
 			$property->usableSize = (string)$usableSize;
 			$property->primarySize = (string)$primarySize;
+		
+			
+			
+		
 		
 			$mainPrice = "";
 			$totalPrice = "";
