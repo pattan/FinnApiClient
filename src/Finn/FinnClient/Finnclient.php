@@ -198,7 +198,7 @@ class FinnClient
 			}
 			
 			$property->facilities = $facilities;
-			//$property->generalText = $generalText;
+			$property->generalText = $generalText;
 			$property->livingSizeFrom = (string)$livingSizeFrom;
 			$property->livingSizeTo = (string)$livingSizeTo;
 			$property->propertyType = (string)$propertyType;
