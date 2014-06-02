@@ -177,9 +177,8 @@ class FinnClient
 				}
 				
 				if($field->attributes()->name == 'facilities') {
-					foreach($field->children($ns['finn'])->field as $facility) {
-						print_r($facility);
-						$facilities[] = (string)$facility;
+					foreach($field->children($ns['finn'])->value as $facility) {
+						$facilities[] = $facility;
 					}
 				}
 				
