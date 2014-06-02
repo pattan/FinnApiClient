@@ -182,12 +182,19 @@ class FinnClient
 					}
 				}
 				
-				/*if($field->attributes()->name == 'general_text') {
-					foreach($field->children($ns['finn'])->field as $text) {
-						$generalText[] = (string)$text;
+				if($field->attributes()->name == 'general_text') {
+					$i = 0;
+					foreach($field->children($ns['finn'])->value as $text) {
+						if($text->attributes()->name == "title") {
+							$generalText[$i]['title'] = (string)$text->attributes()->value;
+						}
+						if($text->attributes()->name == "value") {
+							$generalText[$i]['value'] = (string)$text;
+						}
+						$i++;
 					}
 				}
-				*/
+				
 			}
 			
 			$property->facilities = $facilities;
