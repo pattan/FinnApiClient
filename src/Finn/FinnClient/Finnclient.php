@@ -106,9 +106,11 @@ class FinnClient
 			$work = null;
 			$mobile = null;
 			$fax = null;
+			$email = null;
 			foreach($entry->children($ns['finn'])->contact as $contact) {
 				$name = (string) $contact->children()->name;
 				$title = (string) $contact->attributes()->title;
+				$email = (string) $contact->children()->email;
 				foreach($contact->{'phone-number'} as $numbers) {
 					switch($numbers->attributes()) {
 						case 'work':
@@ -124,6 +126,7 @@ class FinnClient
 				}
 				array_push($contacts, array(
 					'name' => $name,
+					'email' => $email,
 					'title' => $title,
 					'work' => $work,
 					'mobile' => $mobile,
