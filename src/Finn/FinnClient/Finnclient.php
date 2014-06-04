@@ -206,7 +206,7 @@ class FinnClient
 					$situation = (string)$field;
 				}
 			}
-			print_r($generalText);
+
 			$property->ingress = $ingress;
 			$property->situation = $situation;
 			$property->facilities = $facilities;
