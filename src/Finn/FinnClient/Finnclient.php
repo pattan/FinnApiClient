@@ -187,17 +187,14 @@ class FinnClient
 				if($field->attributes()->name == 'general_text') {
 					$i = 0;
 					foreach($field->children($ns['finn'])->value as $text) {
-						
-						foreach($text->children($ns['finn'])->field as $t) {
-							if($t->attributes()->name == "title") {
-								$generalText[$i]['title'] = (string)$t->attributes()->value;
-							}
-							if($t->attributes()->name == "value") {
-								$generalText[$i]['value'] = (string)$t;
-							}
+						if($text->attributes()->name == "title") {
+							$generalText[$i]['title'] = (string)$text->attributes()->value;
 						}
-						$i++;
+						if($text->attributes()->name == "value") {
+							$generalText[$i]['value'] = (string)$text;
+						}
 					}
+						$i++;
 				}
 				print_r($generalText);
 				if($field->attributes()->name == 'ingress') {
