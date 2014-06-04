@@ -151,6 +151,7 @@ class FinnClient
 			$ownershipType = "";
 			$usableSize = "";
 			$primarySize = "";
+			$ingress = "";
 			$facilities = array();
 			$generalText = array();
 			foreach ($adata->children($ns['finn'])->field as $field) {
@@ -185,7 +186,7 @@ class FinnClient
 				if($field->attributes()->name == 'general_text') {
 					$i = 0;
 					foreach($field->children($ns['finn'])->value as $text) {
-						foreach($text as $t) {
+						foreach($text->children($ns['finn'])->field as $t) {
 							if($t->attributes()->name == "title") {
 								$generalText[$i]['title'] = (string)$t->attributes()->value;
 							}
@@ -196,8 +197,13 @@ class FinnClient
 						$i++;
 					}
 				}
+				
+				if($field->attributes()->name == 'ingress') {
+					$ingress = (string)$field->value;
+				}
 			}
 			
+			$property->ingress = $ingress;
 			$property->facilities = $facilities;
 			$property->generalText = $generalText;
 			$property->livingSizeFrom = (string)$livingSizeFrom;
