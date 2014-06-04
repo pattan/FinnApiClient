@@ -199,7 +199,8 @@ class FinnClient
 				}
 				
 				if($field->attributes()->name == 'ingress') {
-					$ingress = (string)$field->value;
+					print_r($field);
+					//$ingress = (string)$field->value;
 				}
 			}
 			
