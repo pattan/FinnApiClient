@@ -13,7 +13,7 @@ Add this to your projects composer.json file
 	}
 ],
 "require": {
-	"reeltime/finnapiclient":"*"
+	"reeltime/finnapiclient":"1.*"
 }
 ```
 
