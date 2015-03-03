@@ -83,7 +83,7 @@ class FinnClient
 			  }
 			  //if disposed == true, show the label
 			  if ($category->attributes()->scheme =="urn:finn:ad:disposed"){
-				if($entry->category->attributes()->term == "true"){
+				if($category->attributes()->term == "true"){
 				  $status = $category->attributes()->label;
 				}
 			  }
