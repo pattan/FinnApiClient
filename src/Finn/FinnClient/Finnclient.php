@@ -101,6 +101,7 @@ class FinnClient
 			$property->city = (string)$location->children($ns['finn'])->city;
 			$property->address = (string)$location->children($ns['finn'])->address;
 			$property->postalCode = (string)$location->children($ns['finn'])->{'postal-code'};
+			$property->cityDistrict = (string)$location->children($ns['finn'])->{'city-district'};
 			
 			$contacts = array();
 			$work = null;
