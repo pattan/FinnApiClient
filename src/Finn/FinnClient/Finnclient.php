@@ -102,7 +102,28 @@ class FinnClient
 			$property->address = (string)$location->children($ns['finn'])->address;
 			$property->postalCode = (string)$location->children($ns['finn'])->{'postal-code'};
 			$property->cityDistrict = (string)$location->children($ns['finn'])->{'city-district'};
+			$property->ageExpires = (string)$entry->children($ns['age'])->expires;
 			
+			$adata = $entry->children($ns['finn'])->adata;			
+			foreach ($adata->children($ns['finn'])->field as $field) {
+				if ($field->attributes()->name =="job_title"){
+				  $property->jobTitle = (string)$field->attributes()->value;
+				}
+				
+				if ($field->attributes()->name =="company"){
+					foreach ($field as $company) {
+						if ($company->attributes()->name =="name"){
+							if (empty($company->attributes()->value)) {
+								$property->companyName = (string)$company;
+							} else {
+								$property->companyName = (string)$company->attributes()->value;
+							}
+						}
+					}
+				  
+				}
+			}
+      
 			$contacts = array();
 			$work = null;
 			$mobile = null;
