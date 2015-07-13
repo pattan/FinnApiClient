@@ -35,12 +35,17 @@ class FinnClient
 	
 	/*
 	*	Get single object with finncode
-	*   @param $type: finn realestate type "realestate-homes"
+	*   	@param $type: finn realestate type "realestate-homes"
 	*	@param $finncode: The ads finncode
 	*/
 	public function getObject($type, $finncode)
 	{
-		$url = $this->apiUrl.'ad/'.$type.'/'.$finncode;
+		if (empty($type)) {
+			$url = $this->apiUrl.'ad/'.$finncode;
+		}else {
+			$url = $this->apiUrl.'ad/'.$type.'/'.$finncode;
+		}
+	
 		$rawData = $this->restClient->send($url);
 		
 		//parse dataene til array med objekter
