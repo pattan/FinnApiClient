@@ -99,7 +99,8 @@ class CurlClient implements ClientInterface
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, 0);
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt($this->ch, CURLOPT_HTTPHEADER, $this->settings["header"]);
-		
+		curl_setopt($this->ch, CURLOPT_FOLLOWLOCATION, 1);
+
 		$rawData = curl_exec($this->ch);
 		
 		$httpcode = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);	
