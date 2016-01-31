@@ -107,7 +107,9 @@ class FinnClient
 			$property->address = (string)$location->children($ns['finn'])->address;
 			$property->postalCode = (string)$location->children($ns['finn'])->{'postal-code'};
 			$property->cityDistrict = (string)$location->children($ns['finn'])->{'city-district'};
-			$property->ageExpires = (string)$entry->children($ns['age'])->expires;
+			if (isset($ns['age'])) {
+				$property->ageExpires = (string)$entry->children($ns['age'])->expires;
+			}
 			
 			$adata = $entry->children($ns['finn'])->adata;			
 			foreach ($adata->children($ns['finn'])->field as $field) {
